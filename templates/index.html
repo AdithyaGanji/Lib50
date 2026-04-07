@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+  {% if alert_details %}
+    <div class="d-flex justify-content-center">
+      <div class="alert alert-success alert-on-homepage alert-dismissible fade show text-center" role="alert">
+        Successfully 
+          {% if alert_details["action"] == "borrow" %} 
+            borrowed
+          {% else %}
+            returned
+          {% endif %}
+        {{ alert_details["book_title"] }}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  {% endif %}
+
+  <h3 class="text-center">Hello, {{ name }}!</h3>
+
+  {% if not borrowed_books %}
+    <h5 class="mt-4 text-secondary text-center">No books currently borrowed.</h5>
+  {% else %}
+    <span class="my-borrowings-text">My Borrowings</span>
+
+    <table class="mt-2 table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th class="d-none d-md-table-cell" scope="col">Author</th>
+          <th scope="col">Borrow Date</th>
+          <th scope="col">Due Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for borrowed_book in borrowed_books %}
+          <tr>
+            <td>{{ borrowed_book["title"] }}</td>
+            <td class="d-none d-md-table-cell">{{ borrowed_book["author"] }}</td>
+            <td>{{ borrowed_book["borrow_date"] }}</td>
+            <td 
+              class="{% if borrowed_book['overdue'] %} text-danger {% else %} text-success {% endif %}"
+            >{{ borrowed_book["due_date"] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}

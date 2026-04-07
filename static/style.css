@@ -1,0 +1,78 @@
+body {
+  background-color: #151515;
+}
+
+.main {
+  min-height: calc(100vh - (56.8px + 56.8px));
+  padding-block: 45px;
+  width: 87.5%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.content {
+  width: 100%;
+  margin-block: -15px;
+}
+
+.table, td {
+  background-color: #151515 !important;
+}
+
+.logout-link {
+  color: #FFFFFFA6;
+}
+
+/* Alerts */
+.alert-warning {
+  margin-top: 10px;
+  margin-bottom: 1px;
+}
+
+.alert-success {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.alert-danger {
+  margin-top: 5px;
+  margin-bottom: 6px;
+}
+
+/* Home Page */
+.my-borrowings-text {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 8px !important;
+}
+
+/* Browse Page */
+.search-form {
+  width: 100%;
+}
+
+.search-input {
+  min-width: 285px;
+  width: 32.5%;
+  margin-right: 0 !important;
+}
+
+.borrow-btn {
+  font-size: 14px !important;
+  padding-block: 3.75px !important;
+  padding-inline: 5.75px !important;
+}
+
+.v-divider {
+  width: 1.15px;
+  height: 30px;
+  margin-inline: 10px;
+  background-color: rgb(67, 67, 67);
+}
+
+.alert-on-homepage {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}

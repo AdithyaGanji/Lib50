@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block nav_start %}{% endblock %}
+
+{% block nav_end_link %}
+  <div class="ms-auto nav-item my-2">
+    <a class="nav-link logout-link" href="/register">Register</a>
+  </div>
+{% endblock %}
+
+{% block main %}
+  {% if redirect_from_register %}
+    <div class="d-flex justify-content-center">
+      <div class="alert alert-success" role="alert">
+        Successfully registered! Please login through your credentials.
+      </div>
+    </div>
+  {% else %}
+    <h3 class="text-center">Welcome Back!</h3>
+  {% endif %}
+
+  {% if invalid_credentials %}
+    <div class="d-flex justify-content-center">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Invalid username or password.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  {% endif %}
+
+  <form class="mt-2 d-flex flex-column align-items-center" action="/login" method="post">
+    <div class="mb-3">
+      <input autocomplete="off" type="text" class="w-auto form-control shadow-none" name="username" placeholder="Username" required>
+    </div>
+    <div class="mb-3">
+      <input autocomplete="off" type="password" class="w-auto form-control shadow-none" name="password" placeholder="Password" required>
+    </div>
+    <button type="submit" class="mt-1 btn btn-light">Login</button>
+  </form>
+{% endblock %}

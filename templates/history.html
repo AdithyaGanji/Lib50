@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  History
+{% endblock %}
+
+{% block content %}
+  <h3 class="text-center">History</h3>
+  
+  {% if not history %}
+    <h5 class="mt-4 text-secondary text-center">No history found.</h5>
+  {% else %}
+    <div class="d-flex align-items-end flex-column">
+      <form action="/history" method="post">
+        <button class="mt-2 btn btn-danger">Clear History</button>
+      </form>
+
+      <table class="mt-3 table">
+        <thead>
+          <tr>
+            <th scope="col">Book Title</th>
+            <th scope="col">Action</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for instance in history %}
+            <tr>
+              <td>{{ instance["title"] }}</td>
+              <td 
+                class="{% if instance['action'] == 'Borrow' %} text-primary {% else %} text-success {% endif %}"
+              >{{ instance["action"] }}</td>
+              <td>{{ instance["date"] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+{% endblock %}
