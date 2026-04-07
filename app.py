@@ -1,10 +1,15 @@
+import os
+
 from flask import Flask, render_template, redirect, session, request, jsonify
+from dotenv import load_dotenv
 from cs50 import SQL
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
 
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = "zyx987123abc"
+app.secret_key = os.environ.get("FLASK_SECRET_KEY")
 
 db = SQL("sqlite:///lib50.db")
 
