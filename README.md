@@ -1,5 +1,4 @@
 # Campus Library Management (Lib50)
-#### Video Demo: https://youtu.be/knkOCYuQDlk
 #### Description: 
 
 Campus Library Management (also referred to as Lib50) is a fully-responsive web application designed to simulate the digitalization (and streamline the process) of borrowing and returning books in an academic library setting.
