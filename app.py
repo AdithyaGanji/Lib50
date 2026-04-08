@@ -39,7 +39,7 @@ def index(alert_details={}):
       if difference_in_days < 0:
         borrowed_book["overdue"] = True
 
-    return render_template("index.html", name=session["username"], borrowed_books=borrowed_books, alert_details=alert_details, active="home")
+    return render_template("index.html", name=session["name"], borrowed_books=borrowed_books, alert_details=alert_details, active="home")
   
 
 @app.route("/login", methods=["GET", "POST"])
@@ -54,19 +54,19 @@ def login(redirect_from_register=False):
 
     rows = (
       db.execute("""
-        SELECT id AS user_id, password_hash
+        SELECT id AS user_id, name, password_hash
         FROM users
         WHERE username = ?
       """, username))
     if len(rows) == 0:
       return render_template("login.html", invalid_credentials=True)
 
-    user_id, password_hash = rows[0].get("user_id"), rows[0].get("password_hash")
+    user_id, name, password_hash = rows[0].get("user_id"), rows[0].get("name"), rows[0].get("password_hash")
 
     if not check_password_hash(password_hash, password):
       return render_template("login.html", invalid_credentials=True)
 
-    session["user_id"], session["username"] = user_id, username
+    session["user_id"], session["name"] = user_id, name
 
     return redirect("/")
 
